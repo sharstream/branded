@@ -20,11 +20,38 @@
             <form id="movie-form">
               <div class="container">
                 <div class="row">
-                  <div class="col-10">
-                    <input class="new-item form-control" placeholder="Add a Movie" type="text" />
-                  </div>
-                  <div class="col-2">
-                    <button type="submit" class="btn btn-success">Add Movie</button>
+                  <div>
+                    <div class="form-group">
+                      <label for="movieTitle">Title</label>
+                      <input type="text" class="new-item form-control" id="movieTitle" aria-describedby="movieHelp" placeholder="Enter movie title">
+                      <small id="titleHelp" class="form-text text-muted">Please enter the correct name of the movie.</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="movieVideo">Select Format</label>
+                      <select class="form-control" id="movieVideo">
+                        <option>VHS</option>
+                        <option>DVD</option>
+                        <option>Streaming</option>
+                      </select>
+                      <small id="videoHelp" class="form-text text-muted">Please only allow values between "VHS", "DVD" or "Streaming".</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="movieLength">Length</label>
+                      <input type="text" class="form-control" id="movieLength" aria-describedby="lengthHelp" placeholder="Enter the length">
+                      <small id="lengthHelp" class="form-text text-muted">Please enter the length of the movie between 0 and 500 minutes.</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="movieRelease">Release</label>
+                      <input type="text" class="form-control" id="movieRelease" aria-describedby="releaseHelp" placeholder="Enter the Realease Year">
+                      <small id="releaseHelp" class="form-text text-muted">Please enter values between 1800 adn 2100.</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputFile">File input</label>
+                      <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+                      <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above
+                        input. It's a bit lighter and easily wraps to a new line.</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Movie</button>
                   </div>
                 </div>
               </div>
