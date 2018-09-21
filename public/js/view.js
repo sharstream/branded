@@ -52,9 +52,16 @@ $(document).ready(function() {
 
   // This function handles showing the input box for a user to edit a movie
   function editMovie() {
+    debugger
     var currentMovie = $(this).data("movie");
     $(this).children().hide();
+    $(".card-header h3").html(`${currentMovie.title}`);
+    console.log(`my current movie is: ${JSON.stringify(currentMovie)}`);
     $(this).children("input.edit").val(currentMovie.title);
+    $(this).children("input.edit").val(currentMovie.video);
+    $(this).children("input.edit").val(currentMovie.duration);
+    $(this).children("input.edit").val(currentMovie.release);
+    $(this).children("input.edit").val(currentMovie.rating);
     $(this).children("input.edit").show();
     $(this).children("input.edit").focus();
   }
@@ -103,19 +110,24 @@ $(document).ready(function() {
   function createNewRow(movie) {
     var $newInputRow = $(
       [
-        `<div class="card border-success mb-3" style="max-width: 18rem;">`,
+        `<div class="card movie-item border-success mb-3" style="max-width: 18rem; display: inline-block; margin: 15px">`,
           `<div class="card-header text-success">`,
-            `<h3>${movie.title}</h3>`,
+            `<h5 class="title">${movie.title}</h5>`,
+            `<input type='text' class='edit-title' style='display: none;'>`,
           `</div>`,
           `<div class="card-body text-success">`,
             `<h5 class="card-title">Format: ${movie.video}</h5>`,
+            `<input type='text' class='edit-video' style='display: none;'>`,
             `<h5 class="card-title">Length: ${movie.duration}</h5>`,
+            `<input type='text' class='edit-duration' style='display: none;'>`,
             `<h5 class="card-title">Release: ${movie.release}</h5>`,
+            `<input type='text' class='edit-release' style='display: none;'>`,
             `<h5 class="card-title">Rating: ${movie.rating}</h5>`,
+            `<input type='text' class='edit-rating' style='display: none;'>`,
           `</div>`,
           `<div class="card-footer bg-transparent border-success">`,
-            `<a class='delete btn btn-danger'>x</a>`,
-            `<a class='complete btn btn-success'>✓</a>`,
+            `<button class='delete btn btn-danger'>x</button>`,
+            `<button class='complete btn btn-success'>✓</button>`,
           `</div>`,
         `</div>`
       ].join("")
