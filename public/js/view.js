@@ -99,14 +99,16 @@ $(document).ready(function() {
   function createNewRow(movie) {
     var $newInputRow = $(
       [
-        "<li class='list-group-item movie-item'>",
-        "<span>",
-        movie.title,
-        "</span>",
-        "<input type='text' class='edit' style='display: none;'>",
-        "<button class='delete btn btn-danger'>x</button>",
-        "<button class='complete btn btn-primary'>✓</button>",
-        "</li>"
+        `<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">`,
+          `<div class="card-header">${movie.title}</div>`,
+          `<div class="card-body">`,
+          `<h5 class="card-title">${movie.video}</h5>`,
+          `<h5 class="card-title">${movie.duration}</h5>`,
+          `<h5 class="card-title">${movie.release}</h5>`,
+          `<h5 class="card-title">${movie.rating}</h5>`,
+            `<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>`,
+          `</div>`,
+        `</div>`
       ].join("")
     );
 
