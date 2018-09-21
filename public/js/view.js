@@ -1,7 +1,11 @@
 // file to test server responde, database and backend
 $(document).ready(function() {
   // Getting a reference to the input field where user adds a new movie
-  var $newItemInput = $("input.new-item");
+  var $newTitleInput = $("input.title");
+  var $newVideoInput = $("select.video");
+  var $newDurationInput = $("input.duration");
+  var $newReleaseInput = $("input.release");
+  var $newRatingInput = $("input.rating");
   // Our new movies will go inside the movieContainer
   var $movieContainer = $(".movie-container");
   // Adding event listeners for deleting, editing, and adding movies
@@ -125,11 +129,19 @@ $(document).ready(function() {
   function insertMovie(event) {
     event.preventDefault();
     var movie = {
-      title: $newItemInput.val().trim(),
+      title: $newTitleInput.val().trim(),
+      video: $newVideoInput.val().trim(),
+      duration: $newDurationInput.val().trim(),
+      release: $newReleaseInput.val(),
+      rating: $newRatingInput.val().trim(),
       complete: false
     };
 
     $.post("/api/movies", movie, getMovies);
-    $newItemInput.val("");
+    $newTitleInput.val("");
+    $newVideoInput.val("");
+    $newDurationInput.val("");
+    $newReleaseInput.val("");
+    $newRatingInput.val("");
   }
 });
