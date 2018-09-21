@@ -24,14 +24,16 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       // allowNull: false,
       validate: {
-        len: [1800, 2100]
+        max: 2100, // only allow values <= 2100
+        min: 1800, // only allow values >= 1800
       }
     },
     rating: {
       type: DataTypes.INTEGER,
       // allowNull: false,
       validate: {
-        len: [1, 5]
+        max: 5, // only allow values <= 5
+        min: 0, // only allow values >= 0
       }
     }
   }, {
