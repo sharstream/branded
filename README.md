@@ -25,6 +25,7 @@ This project uses the following:
 * NPM
 * Express
 * Okta - OpenID Connect or OAuth
+* Heroku
 
 # Who Did What?
 Dave Perez wrangled:
