@@ -1,18 +1,17 @@
 # branded
-Software Development Exercise
 
 Fullstack Web Development
 
-Project 1
-
-# What's branded 1.0?
+# What's branded?
 Branded is a movie repository website for storing movie collections like you've never see it before.
 
 # Live Demo
-* Heroku - GitHub Pages
+* Heroku - GitHub Pages https://sharstream.github.io/branded/
+
+![image alternative text](https://i.imgur.com/28PLFTC.png)
 
 # APIs, New Tech & Stuff We Already Know...
-* This project uses the following:
+This project uses the following:
 * jQuery & AJAX
 * Bootstrap 4
 * Node JS
@@ -28,7 +27,7 @@ Branded is a movie repository website for storing movie collections like you've 
 * Okta - OpenID Connect or OAuth
 
 # Who Did What?
-* Dave Perez wrangled:
+Dave Perez wrangled:
 * Drafting & Design
 * Movies Schemas and Tables
 * Database setup & management
