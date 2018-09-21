@@ -103,14 +103,19 @@ $(document).ready(function() {
   function createNewRow(movie) {
     var $newInputRow = $(
       [
-        `<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">`,
-          `<div class="card-header">${movie.title}</div>`,
-          `<div class="card-body">`,
-          `<h5 class="card-title">${movie.video}</h5>`,
-          `<h5 class="card-title">${movie.duration}</h5>`,
-          `<h5 class="card-title">${movie.release}</h5>`,
-          `<h5 class="card-title">${movie.rating}</h5>`,
-            `<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>`,
+        `<div class="card border-success mb-3" style="max-width: 18rem;">`,
+          `<div class="card-header text-success">`,
+            `<h3>${movie.title}</h3>`,
+          `</div>`,
+          `<div class="card-body text-success">`,
+            `<h5 class="card-title">Format: ${movie.video}</h5>`,
+            `<h5 class="card-title">Length: ${movie.duration}</h5>`,
+            `<h5 class="card-title">Release: ${movie.release}</h5>`,
+            `<h5 class="card-title">Rating: ${movie.rating}</h5>`,
+          `</div>`,
+          `<div class="card-footer bg-transparent border-success">`,
+            `<a class='delete btn btn-danger'>x</a>`,
+            `<a class='complete btn btn-success'>✓</a>`,
           `</div>`,
         `</div>`
       ].join("")
