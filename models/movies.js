@@ -2,6 +2,12 @@
 // =============================================================
 module.exports = function (sequelize, DataTypes) {
   var Movie = sequelize.define("Movie", {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     title: {
       type: DataTypes.STRING,
       allowNull: false
