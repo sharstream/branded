@@ -4,7 +4,9 @@
   "description": "Branded is a movie repo website for storing movie collections like you've never see it before.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:migrate": "babel-node ./scripts/db/migrate",
+    "pretest": "NODE_ENV=test npm run db:migrate",
+    "test": "NODE_PATH=./ NODE_ENV=test mocha --compilers js:babel-core/register --recursive",
     "start": "node server.js",
     "watch": "nodemon server.js"
   },
@@ -20,10 +22,29 @@
   "homepage": "https://github.com/sharstream/branded#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "child-process-promise": "2.2.1",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
+    "lodash": "^4.17.11",
     "mysql": "^2.16.0",
     "mysql2": "^1.6.1",
-    "sequelize": "^4.38.1"
+    "sequelize": "^4.38.1",
+    "sequelize-cli": "^4.1.1",
+    "whatwg-url": "^7.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-eslint": "8.2.6",
+    "babel-plugin-istanbul": "4.1.6",
+    "babel-plugin-module-resolver": "3.1.1",
+    "babel-plugin-root-import": "6.1.0",
+    "babel-plugin-syntax-object-rest-spread": "6.13.0",
+    "babel-plugin-transform-class-properties": "6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "6.26.2",
+    "babel-register": "6.26.0",
+    "chai": "^3.5.0",
+    "faker": "^4.1.0",
+    "mocha": "^3.5.3",
+    "require-directory": "^2.1.1"
   }
 }

@@ -1,4 +1,4 @@
-// test/models/user.js
+// test/models/movie.js
 var assert = require("chai");
 
 var models = require("../models");
