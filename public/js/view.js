@@ -161,4 +161,32 @@ $(document).ready(function() {
     $newReleaseInput.val("");
     $newRatingInput.val("");
   }
+
+  $('.display_login_modal').click(function() {
+    $('.username_input').attr({'placeholder':'Existing User '});
+    $('.password_input').attr({'placeholder':'Password '});
+    $('.confirm_password_input').css({'display':'none'});
+    $('.type_of_user_button').html('New User');
+    $('.login_modal').eq(0).css({'opacity':'1','z-index':'2'});
+  });
+
+  $('.close_modal').click(function() {
+		$('.login_modal').css({'opacity':0,'z-index':'-1'});
+	});
+
+  $('.type_of_user_button').click(function() {
+    if ($(this).html() === "New User") {
+      $('.username_input').attr({'placeholder':'New User'});
+      $('.password_input').attr({'placeholder':'New Password'});
+      $('.confirm_password_input').css({'display':'block'});
+
+      $(this).html('Existing User');
+    } else if ($(this).html() === "Existing User") {
+      $('.username_input').attr({'placeholder':'Existing User '});
+      $('.password_input').attr({'placeholder':'Password '});
+      $('.confirm_password_input').css({'display':'none'});
+
+      $(this).html('New User');
+    }
+	});
 });
