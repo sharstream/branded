@@ -171,8 +171,8 @@ $(document).ready(function() {
   });
 
   $('.close_modal').click(function() {
-		$('.login_modal').css({'opacity':0,'z-index':'-1'});
-	});
+    $('.login_modal').css({'opacity':0,'z-index':'-1'});
+  });
 
   $('.type_of_user_button').click(function() {
     if ($(this).html() === "New User") {
@@ -188,5 +188,5 @@ $(document).ready(function() {
 
       $(this).html('New User');
     }
-	});
+  });
 });
