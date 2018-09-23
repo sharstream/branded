@@ -21,6 +21,11 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/logout", (req, res) => {
+    req.logout();
+    res.redirect("/");
+  });
+
   // POST route for storing a new movie
   app.post("/api/movies", function (req, res) {
     // create takes an argument of an object describing the item we want to
