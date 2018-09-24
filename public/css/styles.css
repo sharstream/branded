@@ -17,3 +17,198 @@ input.new-item:focus {
 .edit {
   width: 100%;
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+  overflow-x: hidden;
+  /* overflow-y: hidden; */
+}
+
+.github-button {}
+
+header {
+  width: 100%;
+  background: #d9aa9a;
+  color: white;
+  padding: 10px 5% 2.5px 5%;
+  font-size: 1.75em;
+}
+
+.branded_logo {
+  width: 25px;
+  height: 20px;
+  margin-right: -5px;
+}
+
+.username_label {
+  background: #998999;
+  opacity: 0.25;
+  padding: 10px 0 2.5px 50px;
+  text-align: left;
+  color: white;
+  font-size: 1.75em;
+  text-shadow: 0 1px 0 rgba(00, 00, 00, 0.25);
+  border-radius: 5px 5px 0 0;
+  margin-bottom: 25px;
+}
+
+.login_container {
+  background: white;
+  border-radius: 5px;
+  width: 40%;
+  height: fit-content;
+}
+
+.display_login_modal,
+.display_logout_modal,
+.display_signout_modal {
+  background: white;
+  border: 1px solid #d9aa9a;
+  padding: 7.5px 12.5px 2.5px 12.5px;
+  font-size: 0.5em;
+  color: #d9aa9a;
+  text-align: right;
+  border-radius: 5px;
+  position: absolute;
+  right: 5%;
+  height: 30px;
+  margin: -2.5px 0 0 0;
+}
+
+.display_logout_modal {
+  margin-right: 115px;
+}
+
+.display_login_modal {
+  margin-right: 58px;
+}
+
+.display_login_modal:hover {
+  background: #998999 !important;
+  border-color: #998999 !important;
+  color: white;
+  text-shadow: 0 1px 0 rgba(00, 00, 00, 0.25);
+  cursor: pointer;
+}
+
+.login_modal {
+  z-index: -1;
+  transition: all 0.5s ease-in-out;
+  display: flex;
+  opacity: 0;
+  padding: 10% 0 0 0;
+  justify-content: center;
+  top: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background: rgba(00, 00, 00, 0.25);
+}
+
+.close_modal {
+  width: 25px;
+  height: 25px;
+  position: relative;
+  top: 25px;
+  left: 25px;
+  opacity: 0.5;
+}
+
+.close_modal:hover {
+  cursor: pointer;
+  opacity: 0.1;
+}
+
+.modal_container {
+  padding: 50px;
+  display: grid;
+}
+
+.username_input,
+.password_input,
+.confirm_password_input {
+  height: 25px;
+  padding: 10px 10px 2.5px 10px;
+  margin-bottom: 25px;
+  font-size: 24px;
+  text-align: left;
+  caret-color: transparent;
+  border: none;
+  border-bottom: 1px solid lightgrey;
+  box-shadow: 0 2px 0 rgba(00, 00, 00, 0);
+}
+
+.username_input:focus,
+.password_input:focus,
+.confirm_password_input:focus {
+  box-shadow: 0 2px 0 lightgrey;
+}
+
+.confirm_password_input {
+  display: none;
+}
+
+.login_buttons {
+  display: inline-flex;
+}
+
+.login_button,
+.type_of_user_button {
+  background: white;
+  border: 1px solid #d9aa9a;
+  padding: 10px 12.5px 2.5px 12.5px;
+  font-size: 1em;
+  color: #d9aa9a;
+  text-align: center;
+  border-radius: 5px;
+  margin: 50px 5% 0 5%;
+  width: 40%;
+}
+
+.login_button:hover,
+.type_of_user_button:hover {
+  background: #d9aa9a !important;
+  color: white;
+  text-shadow: 0 1px 0 rgba(00, 00, 00, 0.25);
+  cursor: pointer;
+}
+
+.type_of_user_button {
+  background: rgb(153, 137, 153);
+  border-color: rgb(153, 137, 153);
+  color: white;
+}
+
+.type_of_user_button:hover {
+  border-color: #d9aa9a !important;
+}
+
+.username_input,
+.password_input,
+.confirm_password_input {
+  color: lightgrey;
+}
+
+.username_input:focus,
+.password_input:focus,
+.confirm_password_input:focus {
+  color: lightgrey;
+}
+
+::placeholder {
+  color: lightgrey;
+  text-align: right;
+}
+
+:-ms-input-placeholder {
+  color: lightgrey;
+  text-align: right;
+}
+
+::-ms-input-placeholder {
+  color: lightgrey;
+  text-align: right;
+}
