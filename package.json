@@ -23,6 +23,7 @@
   "homepage": "https://github.com/sharstream/branded#readme",
   "dependencies": {
     "@okta/oidc-middleware": "^1.0.0",
+    "@okta/okta-signin-widget": "^2.13.0",
     "body-parser": "^1.18.3",
     "child-process-promise": "2.2.1",
     "dotenv": "^6.0.0",
@@ -35,6 +36,7 @@
     "nodemon": "^1.18.4",
     "sequelize": "^4.38.1",
     "sequelize-cli": "^4.1.1",
+    "u2f-api-polyfill": "0.4.1",
     "whatwg-url": "^7.0.0"
   },
   "devDependencies": {
