@@ -8,8 +8,6 @@ Branded is a movie repository website for storing movie collections like you've 
 # Live Demo
 * Heroku - GitHub Pages https://sharstream.github.io/branded/
 
-![image alternative text](https://i.imgur.com/28PLFTC.png)
-
 # APIs, New Tech & Stuff We Already Know...
 This project uses the following:
 * jQuery & AJAX
@@ -45,3 +43,8 @@ Dave Perez wrangled:
 * Route clicking
 * Built tool
 * Repo management & some CSS
+
+*UserLogin
+![image alternative text](https://i.imgur.com/NL4Fbv9.png)
+*AddMovie
+![image alternative text](https://i.imgur.com/njdntt2.png)
