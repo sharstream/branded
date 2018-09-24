@@ -189,4 +189,13 @@ $(document).ready(function() {
       $(this).html('New User');
     }
   });
+
+  $('.login_button').click(function(){
+    var username = $('.username_input').val();
+    var password = $('.password_input').val();
+    console.log('username: ' + username + '\n' + 'pass: ' + password);
+    $.post("/login", username, password);
+    $('.username_input').text("");
+    $('.password_input').text("");
+  });
 });

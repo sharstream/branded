@@ -21,6 +21,17 @@ module.exports = function (app) {
     });
   });
 
+  app.post("/login", (req, res) => {
+    if (res.status("SUCCESS")) {
+      req.login();
+      res.redirect("/");
+      console.log('response: ' + res.body);
+    }
+    else {
+      res.redirect("/logout");
+    }
+  });
+
   app.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/");
