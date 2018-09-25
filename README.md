@@ -44,7 +44,5 @@ Dave Perez wrangled:
 * Built tool
 * Repo management & some CSS
 
-*UserLogin
-![image alternative text](https://i.imgur.com/NL4Fbv9.png)
-*AddMovie
-![image alternative text](https://i.imgur.com/njdntt2.png)
+* UserLogin
+![image alternative text](https://i.imgur.com/eoOnf16.png)
