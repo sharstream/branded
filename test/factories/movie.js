@@ -1,25 +1,25 @@
 
 // test/factories/movie.js
 
-var faker = require("faker");
-var models = require("../../models");
+import faker from "faker";
+import models from "../../models";
 
 /**
  * Generate an object which container attributes needed
- * to successfully create a user instance.
+ * to successfully create a movie instance.
  *
- * @param  {Object} props Properties to use for the user.
+ * @param  {Object} props Properties to use for the movie.
  *
- * @return {Object}       An object to build the user from.
+ * @return {Object}       An object to build the movie from.
  */
 
 const data = async (props = {}) => {
   const defaultProps = {
-    title: faker.internet.title(),
-    video: faker.name.video(),
-    duration: faker.name.duration(),
-    release: faker.name.release(),
-    rating: faker.name.rating(),
+    title: faker.name.title(),
+    video: "VHS",
+    duration: faker.random.number(),
+    release: faker.random.number(),
+    rating: faker.random.number(),
   };
   return Object.assign({}, defaultProps, props);
 };

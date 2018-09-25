@@ -1,7 +1,7 @@
 // test/models/movie.js
 var assert = require("chai");
 
-var models = require("../models");
+var models = require("../../models");
 
 var factories = require("../factories");
 var truncate = require("../truncate");
