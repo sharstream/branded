@@ -52,7 +52,6 @@ $(document).ready(function() {
 
   // This function handles showing the input box for a user to edit a movie
   function editMovie() {
-    debugger
     var currentMovie = $(this).data("movie");
     $(this).children().hide();
     $(".card-header h3").html(`${currentMovie.title}`);
@@ -110,12 +109,12 @@ $(document).ready(function() {
   function createNewRow(movie) {
     var $newInputRow = $(
       [
-        `<div class="card movie-item border-success mb-3" style="max-width: 18rem; display: inline-block; margin: 15px">`,
-          `<div class="card-header text-success">`,
+        `<div class="card movie-item bg-light mb-3" style="max-width: 18rem; display: inline-block; margin: 15px">`,
+          `<div class="card-header">`,
             `<h5 class="title">${movie.title}</h5>`,
             `<input type='text' class='edit-title' style='display: none;'>`,
           `</div>`,
-          `<div class="card-body text-success">`,
+          `<div class="card-body">`,
             `<h5 class="card-title">Format: ${movie.video}</h5>`,
             `<input type='text' class='edit-video' style='display: none;'>`,
             `<h5 class="card-title">Length: ${movie.duration}</h5>`,
@@ -125,9 +124,10 @@ $(document).ready(function() {
             `<h5 class="card-title">Rating: ${movie.rating}</h5>`,
             `<input type='text' class='edit-rating' style='display: none;'>`,
           `</div>`,
-          `<div class="card-footer bg-transparent border-success">`,
-            `<button class='delete btn btn-danger'>x</button>`,
-            `<button class='complete btn btn-success'>✓</button>`,
+          `<div class="card-footer bg-transparent border-dark">`,
+            `<button class='delete'>x</button>`,
+            `<button class='complete'>✓</button>`,
+            `<small class="text-muted">Last updated 3 mins ago</small>`,
           `</div>`,
         `</div>`
       ].join("")

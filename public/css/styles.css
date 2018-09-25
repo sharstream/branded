@@ -156,6 +156,9 @@ header {
 }
 
 .login_button,
+.delete,
+.complete,
+.add_movie,
 .type_of_user_button {
   background: white;
   border: 1px solid #d9aa9a;
@@ -169,6 +172,9 @@ header {
 }
 
 .login_button:hover,
+.delete,
+.complete,
+.add_movie,
 .type_of_user_button:hover {
   background: #d9aa9a !important;
   color: white;

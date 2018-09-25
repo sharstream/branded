@@ -14,9 +14,9 @@ var bodyParser = require("body-parser");
 
 // Globals
 // Load the Sign-In Widget module
-var OktaSignIn = require('@okta/okta-signin-widget');
-var signInWidget = require("./config/oauth")(OktaSignIn);
-signInWidget.renderEl({el: '#widget-container'}, widgetSuccessCallback, widgetErrorCallback);
+// var OktaSignIn = require('@okta/okta-signin-widget');
+// var signInWidget = require("./config/oauth")(OktaSignIn);
+// signInWidget.renderEl({el: '#widget-container'}, widgetSuccessCallback, widgetErrorCallback);
 
 // const OKTA_ISSUER_URI = process.env.OKTA_ISSUER_URI;
 // const OKTA_CLIENT_ID = process.env.OKTA_CLIENT_ID;
