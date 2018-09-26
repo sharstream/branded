@@ -53,7 +53,7 @@ $(document).ready(function() {
   // This function handles showing the input box for a user to edit a movie
   function editMovie() {
     var currentMovie = $(this).data("movie");
-    $(this).children().hide();
+    // $(this).children().hide();
     $(".card-header h3").html(`${currentMovie.title}`);
     console.log(`my current movie is: ${JSON.stringify(currentMovie)}`);
     $(this).children("input.edit").val(currentMovie.title);
@@ -64,6 +64,11 @@ $(document).ready(function() {
     $(this).children("input.edit").show();
     $(this).children("input.edit").focus();
   }
+
+  //new modal edit helper
+  $('#editModal').on('show.bs.modal', function (e) {
+    // var currentMovie = $(e.relatedTarget).data('movie');
+  });
 
   // Toggles complete status
   function toggleComplete(event) {
@@ -126,7 +131,7 @@ $(document).ready(function() {
           `</div>`,
           `<div class="card-footer bg-transparent border-dark">`,
             `<button class='delete'>x</button>`,
-            `<button class='complete'>✓</button>`,
+            `<button href="#editModal" class="movie-box" data-toggle="modal">✓</button>`,
             `<small class="text-muted">Last updated 3 mins ago</small>`,
           `</div>`,
         `</div>`

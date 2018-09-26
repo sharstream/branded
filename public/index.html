@@ -98,6 +98,64 @@
       </div>
     </div>
   </div>
+
+  <div id="editModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div id="editText"><!--I added this, this is where I want the data-myval to go (in this div)--></div>
+        <ul class="list-group movie-list">
+          <li class="list-group-item new-item">
+            <form id="movie-form">
+              <div class="container">
+                <div class="row">
+                  <div>
+                    <div class="form-group">
+                      <label for="movieTitle">Title</label>
+                      <input type="text" class="title form-control" id="movieTitle" aria-describedby="movieHelp" placeholder="Enter movie title">
+                      <small id="titleHelp" class="form-text text-muted">Please enter the correct name of the movie.</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="movieVideo">Select Format</label>
+                      <select class="video form-control" id="movieVideo">
+                        <option>VHS</option>
+                        <option>DVD</option>
+                        <option>Streaming</option>
+                      </select>
+                      <small id="videoHelp" class="form-text text-muted">Please only allow values between "VHS", "DVD" or
+                        "Streaming".</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="movieDuration">Length</label>
+                      <input type="text" class="duration form-control" id="movieDuration" aria-describedby="durationHelp"
+                        placeholder="Enter the duration">
+                      <small id="durationHelp" class="form-text text-muted">Please enter the length of the movie between 0 and 500
+                        minutes.</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="movieRelease">Release</label>
+                      <input type="text" class="release form-control" id="movieRelease" aria-describedby="releaseHelp" placeholder="Enter the Realease Year">
+                      <small id="releaseHelp" class="form-text text-muted">Please enter values between 1800 adn 2100.</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="movieRating">Rating</label>
+                      <input type="text" class="rating form-control" id="movieRating" aria-describedby="ratingHelp" placeholder="Enter your rating">
+                      <small id="ratingHelp" class="form-text text-muted">Please enter ratings between 1 and 5</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </li>
+        </ul>
+        <div class="row">
+          <button type="submit" class="edit_movie">Submit</button>
+          <button class="edit-button center-block" data-dismiss="modal" aria-hidden="true">Close <i class="ion-android-close"></i></button>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
   <!-- Custom Script -->
   <script>
     var signIn = new OktaSignIn({baseUrl: 'https://dev-590113.oktapreview.com'});
