@@ -158,8 +158,8 @@ header {
 .login_button,
 .delete,
 .movie-box,
-.edit-button,
-.edit_movie,
+.close-button,
+.edit-movie,
 .add_movie,
 .type_of_user_button {
   background: white;
@@ -176,8 +176,8 @@ header {
 .login_button:hover,
 .delete,
 .movie-box,
-.edit-button,
-.edit_movie,
+.close-button,
+.edit-movie,
 .add_movie,
 .type_of_user_button:hover {
   background: #d9aa9a !important;

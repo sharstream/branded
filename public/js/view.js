@@ -66,9 +66,9 @@ $(document).ready(function() {
   }
 
   //new modal edit helper
-  $('#editModal').on('show.bs.modal', function (e) {
-    // var currentMovie = $(e.relatedTarget).data('movie');
-  });
+  // $('#editModal').on('show.bs.modal', function (e) {
+  //   // var currentMovie = $(e.relatedTarget).data('movie');
+  // });
 
   // Toggles complete status
   function toggleComplete(event) {
@@ -117,17 +117,12 @@ $(document).ready(function() {
         `<div class="card movie-item bg-light mb-3" style="max-width: 18rem; display: inline-block; margin: 15px">`,
           `<div class="card-header">`,
             `<h5 class="title">${movie.title}</h5>`,
-            `<input type='text' class='edit-title' style='display: none;'>`,
           `</div>`,
           `<div class="card-body">`,
             `<h5 class="card-title">Format: ${movie.video}</h5>`,
-            `<input type='text' class='edit-video' style='display: none;'>`,
             `<h5 class="card-title">Length: ${movie.duration}</h5>`,
-            `<input type='text' class='edit-duration' style='display: none;'>`,
             `<h5 class="card-title">Release: ${movie.release}</h5>`,
-            `<input type='text' class='edit-release' style='display: none;'>`,
             `<h5 class="card-title">Rating: ${movie.rating}</h5>`,
-            `<input type='text' class='edit-rating' style='display: none;'>`,
           `</div>`,
           `<div class="card-footer bg-transparent border-dark">`,
             `<button class='delete'>x</button>`,
