@@ -212,14 +212,14 @@ $(document).ready(function() {
     var auth = firebase.auth();
     var loginPromise = auth.signInWithEmailAndPassword(username, password);
     loginPromise.catch(e => $("#wrongLogin").css("visibility", "visible").html("Please enter a valid username and password."));
-    // $.post("/login", username, password);
-    $('.username_input').text("");
-    $('.password_input').text("");
     $('.login_modal').hide();
     $('#logoutBtn').show();
     $('.display_login_modal').hide();
+    $(".username_label").text('Username:');
     var usr = document.createElement("div");
-    $('.username_label').append(usr ,[`${userInfo.providerData[0].email}`]).css('color', 'white');
+    usr.setAttribute("class", "usr_email");
+    usr.textContent = `${userInfo.providerData[0].email}`;
+    $('.username_label').append(usr).css('color', 'white');
   });
 
   $('.createUser').on("click", function(event){
@@ -261,6 +261,8 @@ $(document).ready(function() {
       $('.display_logout').hide();
       $('.display_login_modal').show();
       $('.username_input').val("");
+      $('.username_label').empty();
+      $('.usr_email').empty();
       $('.password_input').val("");
       $('.confirm_password_input').val("");
     }
