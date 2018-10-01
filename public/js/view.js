@@ -188,6 +188,8 @@ $(document).ready(function() {
   });
 
   $('.type_of_user_button').on("click", function() {
+    $('.wrongLogin').hide();
+    $('.wrongPassword').hide();
     if ($(this).html() === "New User") {
       $('.username_input').attr({'placeholder':'New User'});
       $('.password_input').attr({'placeholder':'New Password'});
@@ -215,7 +217,7 @@ $(document).ready(function() {
         $('#logoutBtn').show();
         $('.display_login_modal').hide();
         $(".username_label").text('Username:');
-        $('.username_label').append(`<div class"usr_email">${userInfo.providerData[0].email}</div>`).css('color', 'white');
+        $('.username_label').append(`<div class"usr_email">${username}</div>`).css('color', 'white');
       }).catch( error => {
         // Handle Errors here.
         console.log(`error message: ${error}`);
@@ -230,17 +232,32 @@ $(document).ready(function() {
     var password = $('.password_input').val().trim();
     var confirm = $('.confirm_password_input').val().trim();
     if (/\S+@\S+\.\S+/.test(username) === true && /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(password) === true && password === confirm) {
-      var auth = firebase.auth();
-      var loginPromise = auth.createUserWithEmailAndPassword(username, password);
-      loginPromise.catch( e => console.log(e.message));
+      firebase.auth().createUserWithEmailAndPassword(username, password)
+        .then( () => {
+          $('.login_modal').hide();
+          $('#logoutBtn').show();
+          $('.display_login_modal').hide();
+          $('.login_modal').hide();
+          $(".username_label").text('Username:');
+          $('.username_label').append(`<div class"usr_email">${username}</div>`).css('color', 'white');
+        })
+        .catch( error => {
+          // Handle Errors here.
+          console.log(`error message: ${error}`);
+          $(".wrongLogin").show();
+        });
     } else {
       //$('#login_modal').modal('show');
-      $('.wrongLogin').css("visibility", "visible").html("Please enter a valid username, password must have capital letter lowercase letter and a number");
+      if (password !== confirm) {
+        $('.wrongLogin').hide();
+        $('.wrongPassword').show();
+      } else {
+        $('.wrongLogin').show();
+      }
       $('.username_input').val("");
       $('.password_input').val("");
       $('.confirm_password_input').val("");
     }
-    $('.login_modal').hide();
   });
 
   $('.display_logout').on("click", function(event){
@@ -257,11 +274,9 @@ $(document).ready(function() {
   //Return user id and information as per objects
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
-      $('#wrongLogin').css('visibility', 'hidden');
-      // $('.login_modal').hide();
       $('.display_logout').show();
-      $('.display_login_modal').hide();
-      $(".wrongLogin").css('display', 'none');
+      // $('.display_login_modal').hide();
+      // $(".wrongLogin").css('display', 'none');
       // return user login object from JSON
       userInfo = firebaseUser;
       userLoginID = userInfo.uid;
