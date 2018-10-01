@@ -235,4 +235,9 @@ $(document).ready(function() {
     $('.login_modal').hide();
   });
 
+  $('.logoutBtn').on("click", function(event){
+    event.preventDefault();
+    firebase.auth().signOut();
+  });
+
 });
