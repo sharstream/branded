@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/lumen/bootstrap.min.css" />
   <link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
   <script src="https://code.jquery.com/jquery.js"></script>
+  <!-- Change the "src" attribute according to your installation path -->
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
 </head>
@@ -32,18 +34,18 @@
       <div class="col-md-6 offset-md-3">
         <ul class="list-group movie-list">
           <li class="list-group-item new-item">
-            <form id="movie-form">
+            <form id="movie-form" action="" name="registration">
               <div class="container">
                 <div class="row">
                   <div>
                     <div class="form-group">
                       <label for="movieTitle">Title</label>
-                      <input type="text" class="title form-control" id="movieTitle" aria-describedby="movieHelp" placeholder="Enter movie title">
+                      <input type="text" class="title form-control" name="title" id="movieTitle" aria-describedby="movieHelp" placeholder="Enter movie title">
                       <small id="titleHelp" class="form-text text-muted">Please enter the correct name of the movie.</small>
                     </div>
                     <div class="form-group">
                       <label for="movieVideo">Select Format</label>
-                      <select class="video form-control" id="movieVideo">
+                      <select class="video form-control" name="format" id="movieVideo">
                         <option>VHS</option>
                         <option>DVD</option>
                         <option>Streaming</option>
@@ -52,17 +54,17 @@
                     </div>
                     <div class="form-group">
                       <label for="movieDuration">Length</label>
-                      <input type="text" class="duration form-control" id="movieDuration" aria-describedby="durationHelp" placeholder="Enter the duration">
+                      <input type="text" class="duration form-control" name="duration" id="movieDuration" aria-describedby="durationHelp" placeholder="Enter the duration">
                       <small id="durationHelp" class="form-text text-muted">Please enter the length of the movie between 0 and 500 minutes.</small>
                     </div>
                     <div class="form-group">
                       <label for="movieRelease">Release</label>
-                      <input type="text" class="release form-control" id="movieRelease" aria-describedby="releaseHelp" placeholder="Enter the Realease Year">
+                      <input type="text" class="release form-control" name="release" id="movieRelease" aria-describedby="releaseHelp" placeholder="Enter the Realease Year">
                       <small id="releaseHelp" class="form-text text-muted">Please enter values between 1800 adn 2100.</small>
                     </div>
                     <div class="form-group">
                       <label for="movieRating">Rating</label>
-                      <input type="text" class="rating form-control" id="movieRating" aria-describedby="ratingHelp" placeholder="Enter your rating">
+                      <input type="text" class="rating form-control" name="rating" id="movieRating" aria-describedby="ratingHelp" placeholder="Enter your rating">
                       <small id="ratingHelp" class="form-text text-muted">Please enter ratings between 1 and 5</small>
                     </div>
                     <div class="form-group">
@@ -162,6 +164,7 @@
   </div>
   <!-- Custom Script -->
   <script src="js/view.js" type="text/javascript"></script>
+  <script src="js/form-validation.js" type="text/javascript"></script>
 
 </body>
 

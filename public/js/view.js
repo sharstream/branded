@@ -180,6 +180,7 @@ $(document).ready(function() {
     $('.confirm_password_input').css({'display':'none'});
     $('.type_of_user_button').html('New User');
     $('.login_modal').eq(0).css({'opacity':'1','z-index':'2'});
+    $('.login_modal').show();
   });
 
   $('.close_modal').click(function() {
@@ -247,7 +248,7 @@ $(document).ready(function() {
   firebase.auth().onAuthStateChanged(firebaseUser => {
     if (firebaseUser) {
       $('#wrongLogin').css('visibility', 'hidden');
-      $('.login_modal').hide();
+      // $('.login_modal').hide();
       $('.display_logout').show();
       $('.display_login_modal').hide();
       // return user login object from JSON

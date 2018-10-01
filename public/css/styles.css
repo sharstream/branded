@@ -26,6 +26,10 @@ body {
   /* overflow-y: hidden; */
 }
 
+form .error {
+  color: #ff0000;
+}
+
 .github-button {}
 
 header {
