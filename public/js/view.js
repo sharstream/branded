@@ -245,7 +245,6 @@ $(document).ready(function() {
 
   //Return user id and information as per objects
   firebase.auth().onAuthStateChanged(firebaseUser => {
-    debugger
     if (firebaseUser) {
       $('#wrongLogin').css('visibility', 'hidden');
       $('.login_modal').hide();
