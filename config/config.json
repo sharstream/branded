@@ -9,10 +9,10 @@
     "operatorsAliases": false
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
+    "username": "fy7jjwb2v6z9076l",
+    "password": "mgh8q04zaevlqd4n",
+    "database": "emv6y60xfqf1nftg",
+    "host": "sulnwdk5uwjw1r2k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "port": 3306,
     "dialect": "mysql",
     "operatorsAliases": false
