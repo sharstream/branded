@@ -218,6 +218,8 @@ $(document).ready(function() {
     $('.login_modal').hide();
     $('#logoutBtn').show();
     $('.display_login_modal').hide();
+    var usr = document.createElement("div");
+    $('.username_label').append(usr ,[`${userInfo.providerData[0].email}`]).css('color', 'white');
   });
 
   $('.createUser').on("click", function(event){
