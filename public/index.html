@@ -95,7 +95,9 @@
         <input class="username_input" placeholder="Existing User ">
         <input class="password_input" type="password" placeholder="Password ">
         <input class="confirm_password_input" type="password" placeholder="Confirm Password ">
-        <p id="wrongLogin"></p>
+        <div class="alert alert-danger wrongLogin" role="alert" style="display: none">
+          Please enter a valid username and password!
+        </div>
         <div class="login_buttons">
           <button class="type_of_user_button">New User</button>
           <button class="login_button">Log In</button>

@@ -209,17 +209,19 @@ $(document).ready(function() {
     event.preventDefault();
     var username = $('.username_input').val().trim();
     var password = $('.password_input').val().trim();
-    var auth = firebase.auth();
-    var loginPromise = auth.signInWithEmailAndPassword(username, password);
-    loginPromise.catch(e => $("#wrongLogin").css("visibility", "visible").html("Please enter a valid username and password."));
-    $('.login_modal').hide();
-    $('#logoutBtn').show();
-    $('.display_login_modal').hide();
-    $(".username_label").text('Username:');
-    var usr = document.createElement("div");
-    usr.setAttribute("class", "usr_email");
-    usr.textContent = `${userInfo.providerData[0].email}`;
-    $('.username_label').append(usr).css('color', 'white');
+    firebase.auth().signInWithEmailAndPassword(username, password)
+      .then( () => {
+        $('.login_modal').hide();
+        $('#logoutBtn').show();
+        $('.display_login_modal').hide();
+        $(".username_label").text('Username:');
+        $('.username_label').append(`<div class"usr_email">${userInfo.providerData[0].email}</div>`).css('color', 'white');
+      }).catch( error => {
+        // Handle Errors here.
+        console.log(`error message: ${error}`);
+        $(".wrongLogin").show();
+        // ...
+    });
   });
 
   $('.createUser').on("click", function(event){
@@ -233,7 +235,7 @@ $(document).ready(function() {
       loginPromise.catch( e => console.log(e.message));
     } else {
       //$('#login_modal').modal('show');
-      $('#wrongLogin').css("visibility", "visible").html("Please enter a valid username, password must have capital letter lowercase letter and a number");
+      $('.wrongLogin').css("visibility", "visible").html("Please enter a valid username, password must have capital letter lowercase letter and a number");
       $('.username_input').val("");
       $('.password_input').val("");
       $('.confirm_password_input').val("");
@@ -243,7 +245,13 @@ $(document).ready(function() {
 
   $('.display_logout').on("click", function(event){
     event.preventDefault();
-    firebase.auth().signOut();
+    firebase.auth().signOut().then(function () {
+      // Sign-out successful.
+      console.log('Sign-out successful.');
+    }).catch(function (error) {
+      // An error happened.
+      console.log(`An error happened: ${error}`);
+    });
   });
 
   //Return user id and information as per objects
@@ -253,6 +261,7 @@ $(document).ready(function() {
       // $('.login_modal').hide();
       $('.display_logout').show();
       $('.display_login_modal').hide();
+      $(".wrongLogin").css('display', 'none');
       // return user login object from JSON
       userInfo = firebaseUser;
       userLoginID = userInfo.uid;
