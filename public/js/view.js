@@ -238,7 +238,7 @@ $(document).ready(function() {
     $('.login_modal').hide();
   });
 
-  $('.logoutBtn').on("click", function(event){
+  $('.display_logout').on("click", function(event){
     event.preventDefault();
     firebase.auth().signOut();
   });
@@ -248,14 +248,14 @@ $(document).ready(function() {
     if (firebaseUser) {
       $('#wrongLogin').css('visibility', 'hidden');
       $('.login_modal').hide();
-      $('.logoutBtn').show();
+      $('.display_logout').show();
       $('.display_login_modal').hide();
       // return user login object from JSON
       userInfo = firebaseUser;
       userLoginID = userInfo.uid;
     } else {
       // hide logout button by default
-      $('.logoutBtn').hide();
+      $('.display_logout').hide();
       $('.display_login_modal').show();
       $('.username_input').val("");
       $('.password_input').val("");
