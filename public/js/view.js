@@ -1,5 +1,15 @@
 // file to test server responde, database and backend
 $(document).ready(function() {
+
+  //Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAUQYckh_cEHjx8jUoU-ERcqz8IEJ8NKhI",
+    authDomain: "myfirstproject-b9662.firebaseapp.com",
+    projectId: "myfirstproject-b9662"
+  };
+
+  firebase.initializeApp(config);
+
   // Getting a reference to the input field where user adds a new movie
   var $newTitleInput = $("input.title");
   var $newVideoInput = $("select.video");
@@ -162,7 +172,7 @@ $(document).ready(function() {
     $newRatingInput.val("");
   }
 
-  $('.display_login_modal').click(function() {
+  $('.display_login_modal').on("click", function() {
     $('.username_input').attr({'placeholder':'Existing User '});
     $('.password_input').attr({'placeholder':'Password '});
     $('.confirm_password_input').css({'display':'none'});
@@ -174,28 +184,55 @@ $(document).ready(function() {
     $('.login_modal').css({'opacity':0,'z-index':'-1'});
   });
 
-  $('.type_of_user_button').click(function() {
+  $('.type_of_user_button').on("click", function() {
     if ($(this).html() === "New User") {
       $('.username_input').attr({'placeholder':'New User'});
       $('.password_input').attr({'placeholder':'New Password'});
       $('.confirm_password_input').css({'display':'block'});
-
+      $('.createUser').show();
+      $('.login_button').hide();
       $(this).html('Existing User');
     } else if ($(this).html() === "Existing User") {
       $('.username_input').attr({'placeholder':'Existing User '});
       $('.password_input').attr({'placeholder':'Password '});
       $('.confirm_password_input').css({'display':'none'});
-
+      $('.login_button').show();
+      $('.createUser').hide();
       $(this).html('New User');
     }
   });
 
-  $('.login_button').click(function(){
-    var username = $('.username_input').val();
-    var password = $('.password_input').val();
-    console.log('username: ' + username + '\n' + 'pass: ' + password);
-    $.post("/login", username, password);
+  $('.login_button').on("click", function(event){
+    event.preventDefault();
+    var username = $('.username_input').val().trim();
+    var password = $('.password_input').val().trim();
+    var auth = firebase.auth();
+    var loginPromise = auth.signInWithEmailAndPassword(username, password);
+    loginPromise.catch(e => $("#wrongLogin").css("visibility", "visible").html("Please enter a valid username and password."));
+    // $.post("/login", username, password);
     $('.username_input').text("");
     $('.password_input').text("");
+    $('.login_modal').hide();
+    $('#logoutBtn').show();
+    $('.display_login_modal').hide();
   });
+
+  $('.createUser').on("click", function(event){
+    event.preventDefault();
+    var username = $('.username_input').val().trim();
+    var password = $('.password_input').val().trim();
+    var confirm = $('.confirm_password_input').val().trim();
+    if (/\S+@\S+\.\S+/.test(username) === true && /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(password) === true && password === confirm) {
+      var auth = firebase.auth();
+      var loginPromise = auth.createUserWithEmailAndPassword(username, password);
+      loginPromise.catch( e => console.log(e.message));
+    } else {
+      //$('#login_modal').modal('show');
+      $('#wrongLogin').css("visibility", "visible").html("Please enter a valid username, password must have capital letter lowercase letter and a number");
+      $('.username').val("");
+      $('.username_input').val("");
+    }
+    $('.login_modal').hide();
+  });
+
 });
