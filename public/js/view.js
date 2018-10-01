@@ -175,6 +175,8 @@ $(document).ready(function() {
   }
 
   $('.display_login_modal').on("click", function() {
+    $('.wrongLogin').hide();
+    $('.wrongPassword').hide();
     $('.username_input').attr({'placeholder':'Existing User '});
     $('.password_input').attr({'placeholder':'Password '});
     $('.confirm_password_input').css({'display':'none'});
@@ -184,6 +186,8 @@ $(document).ready(function() {
   });
 
   $('.close_modal').click(function() {
+    $('.wrongLogin').hide();
+    $('.wrongPassword').hide();
     $('.login_modal').css({'opacity':0,'z-index':'-1'});
   });
 
