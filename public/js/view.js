@@ -28,7 +28,9 @@ $(document).ready(function() {
 
   // Our initial movies array
   var movies = [];
-
+  // User auth objects
+  var userInfo;
+  var userLoginID;
   // Getting movies from database when page loads
   getMovies();
 
@@ -229,10 +231,37 @@ $(document).ready(function() {
     } else {
       //$('#login_modal').modal('show');
       $('#wrongLogin').css("visibility", "visible").html("Please enter a valid username, password must have capital letter lowercase letter and a number");
-      $('.username').val("");
       $('.username_input').val("");
+      $('.password_input').val("");
+      $('.confirm_password_input').val("");
     }
     $('.login_modal').hide();
   });
+
+  $('.logoutBtn').on("click", function(event){
+    event.preventDefault();
+    firebase.auth().signOut();
+  });
+
+  //Return user id and information as per objects
+  firebase.auth().onAuthStateChanged(firebaseUser => {
+    debugger
+    if (firebaseUser) {
+      $('#wrongLogin').css('visibility', 'hidden');
+      $('.login_modal').hide();
+      $('.logoutBtn').show();
+      $('.display_login_modal').hide();
+      // return user login object from JSON
+      userInfo = firebaseUser;
+      userLoginID = userInfo.uid;
+    } else {
+      // hide logout button by default
+      $('.logoutBtn').hide();
+      $('.display_login_modal').show();
+      $('.username_input').val("");
+      $('.password_input').val("");
+      $('.confirm_password_input').val("");
+    }
+  })
 
 });
