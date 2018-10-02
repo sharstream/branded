@@ -6,7 +6,7 @@ Fullstack Web Development
 Branded is a movie repository website for storing movie collections like you've never see it before.
 
 # Live Demo
-* Heroku - GitHub Pages https://sharstream.github.io/branded/
+* Heroku: https://movie-storing.herokuapp.com/
 
 # APIs, New Tech & Stuff We Already Know...
 This project uses the following:
