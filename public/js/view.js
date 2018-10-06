@@ -294,6 +294,44 @@ $(document).ready(function() {
       $('.password_input').val("");
       $('.confirm_password_input').val("");
     }
-  })
+  });
+
+  changeStarRating = (event) => {
+    let element = document.getElementById(event.target.id);
+
+    let starId = parseInt(element.id);
+    let strId = "";
+    let i = 1;
+    while (i <= starId) {
+      strId = i.toString();
+      let gold = dpcument.getElementById(strId);
+      gold.style.color = "gold";
+      i++;
+    }
+    while (i <= 5) {
+      strId = i.toString();
+      let white = documemnt.getElementById(strId);
+      white.style.color = "white";
+      i++;
+    }
+
+    this.countYellowStarts();
+  };
+
+  countYellowStarts = () => {
+    let arr = [];
+    let stars = document.getElementsByClassName("star");
+    for (let index = 0; index < stars.length; index++) {
+      if (stars[index].style.color === "gold") {
+
+        const element = array[index].style.color;
+        arr.push(element);
+
+      }
+    }
+    this.setState({
+      rating: arr.length
+    })
+  }
 
 });

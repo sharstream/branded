@@ -30,8 +30,6 @@ form .error {
   color: #ff0000;
 }
 
-.github-button {}
-
 header {
   width: 100%;
   background: #d9aa9a;
@@ -154,6 +152,15 @@ header {
 
 .confirm_password_input {
   display: none;
+}
+
+.github-button {
+  display: inline-block;
+  border-radius: 3px;
+  padding: 7px 12px;
+  border: 1px solid #D5D5D5;
+  background-image: linear-gradient(#EEE, #DDD);
+  font: 700 13px/18px Helvetica, arial;
 }
 
 .login_buttons {
