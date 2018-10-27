@@ -1,7 +1,8 @@
 // Dependencies
 // =============================================================
-module.exports = function (sequelize, DataTypes) {
-  var Movie = sequelize.define("Movie", {
+//src/models/movies.js
+export default (sequelize, DataTypes) =>
+  sequelize.define('Movie', {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -24,7 +25,7 @@ module.exports = function (sequelize, DataTypes) {
       // allowNull: false,
       validate: {
         len: [0, 500]
-      }
+      },
     },
     release: {
       type: DataTypes.INTEGER,
@@ -32,7 +33,7 @@ module.exports = function (sequelize, DataTypes) {
       validate: {
         max: 2100, // only allow values <= 2100
         min: 1800, // only allow values >= 1800
-      }
+      },
     },
     rating: {
       type: DataTypes.INTEGER,
@@ -40,10 +41,9 @@ module.exports = function (sequelize, DataTypes) {
       validate: {
         max: 5, // only allow values <= 5
         min: 0, // only allow values >= 0
-      }
-    }
+      },
+    },
   }, {
-    timestamps: false
+    timestamps: false,
+    tableName: 'movies',
   });
-  return Movie;
-};
