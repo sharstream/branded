@@ -1,44 +1,35 @@
-// *********************************************************************************
-// api-movies.js - this file offers a set of routes for displaying and saving data to the db
-// *********************************************************************************
-
-// Dependencies
-// =============================================================
-
-// Requiring our models
-var db = require("../models");
-
+const db = require("../models");
 // Routes
 // =============================================================
-module.exports = function (app) {
+module.exports = router => {
 
-  // GET route for getting all of the movies
-  app.get("/api/movies", function (req, res) {
+  // @route   GET api/movies
+  // @desc    route for getting all movies
+  // @access  Private
+  router.get("/api/movies", (req, res) => {
     // findAll returns all entries for a table when used with no options
-    db.Movie.findAll({}).then(function (dbMovie) {
+    db.Movie.findAll({}).then(movies => {
       // We have access to the movies as an argument inside of the callback function
-      res.json(dbMovie);
+      res.json(movies);
     });
   });
 
-  app.post("/login", (req, res) => {
-    if (res.status("SUCCESS")) {
-      req.login();
-      res.redirect("/");
-      console.log('response: ' + res.body);
-    }
-    else {
-      res.redirect("/logout");
-    }
+  // @route   GET api/movie/:id
+  // @desc    route for getting one movie
+  // @access  Private
+  router.get("/api/movie/:id", (req, res) => {
+    // findAll returns all entries for a table when used with no options
+    db.Movie.findOne({ id: req.params.id})
+      .then( movie => {
+        // We have access to the movies as an argument inside of the callback function
+        res.json(movie);
+      }).catch(err => console.log(err));
   });
 
-  app.get("/logout", (req, res) => {
-    req.logout();
-    res.redirect("/");
-  });
-
-  // POST route for storing a new movie
-  app.post("/api/movies", function (req, res) {
+  // @route   POST api/createMovie
+  // @desc    route for storing a new movie
+  // @access  Private
+  router.post("/api/createMovie", (req, res) => {
     // create takes an argument of an object describing the item we want to
     // insert into our movie table. In this case we just we pass in an object with field properties
     db.Movie.create({
@@ -47,27 +38,31 @@ module.exports = function (app) {
       duration: req.body.duration,
       release: req.body.release,
       rating: req.body.rating
-    }).then(function (dbMovie) {
+    }).then(movie => {
       // We have access to the new movie as an argument inside of the callback function
-      res.json(dbMovie);
-    });
+      res.json(movie);
+    }).catch(err => console.log(err));
   });
 
-  // DELETE route for deleting movies. We can get the id of the movie to be deleted from
+  // @route   DELETE api/deleteMovie/:id
+  // @desc    route for deleting movies. We can get the id of the movie to be deleted from
   // req.params.id
-  app.delete("/api/movies/:id", function (req, res) {
+  // @access  Private
+  router.delete("/api/deleteMovies/:id", (req, res) => {
     // We just have to specify which movie we want to destroy with "where"
     db.Movie.destroy({
       where: {
         id: req.params.id
       }
-    }).then(function (dbMovie) {
-      res.json(dbMovie);
-    });
+    }).then(movie => {
+      res.json(movie);
+    }).catch(err => console.log(err));
   });
 
-  // PUT route for updating movies. We can get the updated movie data from req.body
-  app.put("/api/movies", function (req, res) {
+  // @route   PUT api/updateMovie/:id
+  // @desc    route for updating movies. We can get the updated movie data from req.body
+  // @access  Private
+  router.put("/api/updateMovie/:id", (req, res) => {
     // Update takes in an object describing the properties we want to update, and
     // we use where to describe which objects we want to update
     db.Movie.update({
@@ -80,8 +75,8 @@ module.exports = function (app) {
       where: {
         id: req.body.id
       }
-    }).then(function (dbMovie) {
-      res.json(dbMovie);
-    });
+    }).then(movie => {
+      res.json(movie);
+    }).catch(err => console.log(err));
   });
 };
