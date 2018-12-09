@@ -26,7 +26,7 @@ module.exports = router => {
       bcrypt.hash(req.body.password, salt, (err, hash) => {
         if (err) throw err;
         db.User.create(
-          Object.assign(req.body, { password: hash, avatar })
+          Object.assign(req.body, { password: hash, avatar, date: Date.now() })
         ).then(user => {
           res.json(user);
         }).catch(err => {
@@ -44,7 +44,7 @@ module.exports = router => {
     const email = req.body.email;
     const password = req.body.password;
 
-    db.User.findOne({ email })
+    db.User.findOne({ where: { email } })
       .then(user => {
         if (!user) {
           return res.status(404).json({ error: 'User not found'});
