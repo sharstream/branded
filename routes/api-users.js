@@ -7,6 +7,7 @@ const db = require("../models");
 
 // Load Input Validation
 const validatedRegisterInput = require('../validation/register');
+const validatedLoginInput = require('../validation/login');
 // Routes
 // =============================================================
 module.exports = router => {
@@ -20,7 +21,6 @@ module.exports = router => {
   // @desc    Register user
   // @access  Public
   router.post("/api/users/register", (req, res) => {
-
     const { errors, isValid } = validatedRegisterInput(req.body);
 
     // Check validation
@@ -51,6 +51,12 @@ module.exports = router => {
   // @desc    login
   // @access  Private
   router.post("/api/users/login", (req, res) => {
+    const { errors, isValid } = validatedLoginInput(req.body);
+
+    // Check validation
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
 
     const email = req.body.email;
     const password = req.body.password;
@@ -58,7 +64,8 @@ module.exports = router => {
     db.User.findOne({ where: { email } })
       .then(user => {
         if (!user) {
-          return res.status(404).json({ error: 'User not found'});
+          errors.email = 'User not found'
+          return res.status(404).json(errors);
         } else {
           bcrypt.compare(password, user.password)
             .then(isMatch => {
@@ -78,7 +85,8 @@ module.exports = router => {
                   }
                 )
               } else {
-                return res.status(400).json({ error: 'Password incorrect'});
+                errors.password = 'Password incorrect'
+                return res.status(400).json(errors);
               }
             })
         }
