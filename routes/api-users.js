@@ -4,6 +4,9 @@ const jwt = require('jsonwebtoken');
 const keys = require('../config/keys');
 const passport = require('passport');
 const db = require("../models");
+
+// Load Input Validation
+const validatedRegisterInput = require('../validation/register');
 // Routes
 // =============================================================
 module.exports = router => {
@@ -17,6 +20,14 @@ module.exports = router => {
   // @desc    Register user
   // @access  Public
   router.post("/api/users/register", (req, res) => {
+
+    const { errors, isValid } = validatedRegisterInput(req.body);
+
+    // Check validation
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+
     const avatar = gravatar.url(req.body.email, {
       s: '200', // size
       r: 'pg', // rating
