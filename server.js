@@ -21,6 +21,7 @@ const db = require("./models");
 
 // Sets up the Express app to handle data parsing
 
+// Express middleware that allows POSTing data
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
   extended: true
